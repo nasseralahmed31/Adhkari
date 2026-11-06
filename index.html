@@ -6,9 +6,12 @@
 <title>أذكاري</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap">
 <style>
-:root{--bg:#f2f4f0;--card:#fff;--ink:#14231f;--mute:#5d6f69;--line:#d9e0db;--g:#1f6b58;--gold:#a97a1e;--on:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--fs:26px}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1815;--card:#16241f;--ink:#e8efeb;--mute:#93a69f;--line:#26382f;--g:#5fc2a4;--gold:#e0b25a;--on:#0e1815}}
-:root[data-theme="dark"]{--bg:#0e1815;--card:#16241f;--ink:#e8efeb;--mute:#93a69f;--line:#26382f;--g:#5fc2a4;--gold:#e0b25a;--on:#0e1815}
+:root{--bg:#0b1426;--card:#13203a;--ink:#e9edf5;--mute:#9aa9c4;--line:#22324f;--g:#d9b45a;--gold:#d9b45a;--on:#0b1426;--glass:rgba(19,32,58,.62);--gl1:rgba(217,180,90,.13);--gl2:rgba(90,130,210,.2);--cq:#4cc07a;--cn:#6aaef7;--ca:#b99af5;--cd:#cfcfcf;--cok:#4cc07a;--cmx:#f09a4a;--cun:#9aa9c4;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--fs:26px}
+:root[data-theme="olive"]{--bg:#f1efe3;--card:#fbf9ef;--ink:#2c3320;--mute:#6b7355;--line:#d9d6bf;--g:#5b6b2c;--gold:#9a7b2a;--on:#fbf9ef;--glass:rgba(251,249,239,.7);--gl1:rgba(91,107,44,.16);--gl2:rgba(154,123,42,.16)}
+:root[data-theme="sand"]{--bg:#efe6d6;--card:#f8f1e4;--ink:#3a2f22;--mute:#7d6e58;--line:#dccdb4;--g:#8a6a3b;--gold:#a5812f;--on:#fff8ea;--glass:rgba(248,241,228,.7);--gl1:rgba(138,106,59,.16);--gl2:rgba(200,160,90,.2)}
+:root[data-theme="gold"]{--bg:#ffffff;--card:#fffdf7;--ink:#2b2618;--mute:#7b7358;--line:#ece3c6;--g:#8f6f1f;--gold:#b08d3a;--on:#ffffff;--glass:rgba(255,253,247,.75);--gl1:rgba(176,141,58,.14);--gl2:rgba(255,223,130,.28)}
+:root[data-theme="olive"],:root[data-theme="sand"],:root[data-theme="gold"]{--cq:#1f7a45;--cn:#1f5fae;--ca:#6b46b5;--cd:#555;--cok:#1f7a45;--cmx:#b4570f;--cun:#6b6b6b}
+
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "IBM Plex Sans Arabic",system-ui,sans-serif;padding-bottom:76px}
@@ -36,6 +39,20 @@ nav button.on{background:none;color:var(--g);font-weight:600;box-shadow:inset 0 
 .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0}
 h2{font-size:18px;margin:18px 0 8px}
 .hid{display:none}
+body{background-image:radial-gradient(circle at 12% -5%,var(--gl1),transparent 45%),radial-gradient(circle at 95% 25%,var(--gl2),transparent 40%);background-attachment:fixed}
+header,nav,.set,.ch,.glass{background:var(--glass);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.box{padding:12px;border:1px solid var(--line);border-radius:14px;margin-bottom:12px}
+input[type=text]{flex:1;min-width:0;padding:9px 12px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);font:inherit}
+.lrow{display:block;width:100%;text-align:right;margin-bottom:6px;padding:10px}
+#md{position:fixed;inset:0;background:rgba(0,0,0,.5);display:flex;align-items:flex-end;justify-content:center;z-index:20}
+#md.hid{display:none}
+.mbox{width:100%;max-width:640px;max-height:80vh;overflow:auto;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));border-radius:18px 18px 0 0;background:var(--card);border:1px solid var(--line)}
+.badge.t-q{color:var(--cq);border-color:var(--cq)}.badge.t-h{color:var(--cn);border-color:var(--cn)}.badge.t-a{color:var(--ca);border-color:var(--ca)}.badge.t-d{color:var(--cd);border-color:var(--cd)}
+.badge.gok{color:var(--cok);border-color:var(--cok)}.badge.gmx{color:var(--cmx);border-color:var(--cmx)}.badge.gun{color:var(--cun);border-color:var(--cun);opacity:.85}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+#v.an .card,#v.an .ch,#v.an .box{animation:rise .3s ease both}
+@media(prefers-reduced-motion:reduce){#v.an .card,#v.an .ch,#v.an .box{animation:none}}
+body,.card,.ch{transition:background-color .3s,color .3s,border-color .3s}
 .chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 10px}.chips button{padding:4px 10px;font-size:14px}
 .set{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:12px}
 </style>
@@ -46,9 +63,10 @@ h2{font-size:18px;margin:18px 0 8px}
 <div id="set" class="set hid"><div class="row"><label for="fs">حجم الخط</label><input id="fs" type="range" min="20" max="42" value="26"></div><div class="row"><button id="tk" class="on">التشكيل: يظهر</button></div></div>
 <div id="v"></div>
 </main>
-<nav id="nv"><button data-t="h" class="on">الأبواب</button><button data-t="d">اليوم</button><button data-t="s">المسبحة</button><button data-t="f">قائمتي</button></nav>
+<div id="md" class="hid"></div>
+<nav id="nv"><button data-t="h" class="on">الأبواب</button><button data-t="d">اليوم</button><button data-t="s">المسبحة</button><button data-t="f">المفضلة</button></nav>
 <script>
-const C=["الطهارة والوضوء","الصلاة","المسجد والأذان","المنزل والحياة اليومية","الطعام والشراب والصيام","السفر والتنقل","الطقس والظواهر الطبيعية","الهموم والحالات النفسية","المرض والرقية","التعامل الاجتماعي","القرآن والعلم والعبادة","الجنائز والاحتضار","الرؤى والأحلام","الكفارات والاستغفار","التسبيح والتهليل والتحميد والتكبير","الحماية والاستعاذة","الذرية والأسرة والزواج","الرزق والمال","الشكر والحمد والتوبة"];
+const C=["الطهارة والوضوء","الصلاة","المسجد والأذان","المنزل والحياة اليومية","الطعام والشراب والصيام","السفر والتنقل","الطقس والظواهر الطبيعية","الهموم والحالات النفسية","المرض والرقية","التعامل الاجتماعي","القرآن والعلم والعبادة","الجنائز والاحتضار","الرؤى والأحلام","الكفارات والاستغفار","التسبيح والتهليل والتحميد والتكبير","الحماية والاستعاذة","الذرية والأسرة والزواج","الرزق والمال","الشكر والحمد والتوبة","الحج والعمرة"];
 // [رقم، باب، عنوان، نص، مصدر، درجة، نوع(h حديث/q قرآن)، عدد، وسم]
 const D=[
 [1,0,"التسمية","«بِسْمِ اللهِ».","سنن أبي داود (101)، وجامع الترمذي (25)، وابن ماجه (397).","ورد حديث «لا وضوء لمن لم يذكر اسم الله عليه»، واختلف العلماء في ثبوته، وحسّنه بعضهم بمجموع طرقه.","h",1,"w"],
@@ -185,26 +203,50 @@ const D=[
 [138,15,"الاستعاذة من فتنة المحيا والممات","«اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ فِتْنَةِ الْمَحْيَا وَالْمَمَاتِ».","صحيح البخاري (1377)، وصحيح مسلم (588).","","h",1,""],
 [139,15,"الاستعاذة من عذاب القبر","«اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ عَذَابِ الْقَبْرِ».","صحيح مسلم (588).","","h",1,""],
 [140,15,"الاستعاذة من النار","«اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ النَّارِ». ومن الدعاء الجامع: ﴿رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً، وَفِي الْآخِرَةِ حَسَنَةً، وَقِنَا عَذَابَ النَّارِ﴾.","القرآن الكريم، البقرة (201).","","h",1,""],
-[156,18,"الحمد في جميع الأحوال","«الْحَمْدُ لِلَّهِ عَلَى كُلِّ حَالٍ».","ورد في روايات السنن والآثار.","يجوز للمسلم أن يحمد الله بها، ولا يلزم تخصيصها بوقت معين.","d",1,""]
+[156,18,"الحمد في جميع الأحوال","«الْحَمْدُ لِلَّهِ عَلَى كُلِّ حَالٍ».","ورد في روايات السنن والآثار.","يجوز للمسلم أن يحمد الله بها، ولا يلزم تخصيصها بوقت معين.","d",1,""],
+[2001,19,"الدعاء بين الركنين في الطواف","﴿رَبَّنَا آتِنَا فِي الدُّنْيَا حَسَنَةً وَفِي الْآخِرَةِ حَسَنَةً وَقِنَا عَذَابَ النَّارِ﴾.","سنن أبي داود (1892)، والآية في القرآن الكريم، البقرة (201).","حسن.","h",1,""],
+[2002,7,"عند الفزع","«أَعُوذُ بِكَلِمَاتِ اللهِ التَّامَّةِ مِنْ غَضَبِهِ وَشَرِّ عِبَادِهِ، وَمِنْ هَمَزَاتِ الشَّيَاطِينِ وَأَنْ يَحْضُرُونِ».","سنن أبي داود (3893)، وجامع الترمذي (3528) باختلاف يسير.","حسّنه الألباني.","h",1,""],
+[2003,10,"طلب الثبات على الدين","«يَا مُقَلِّبَ الْقُلُوبِ، ثَبِّتْ قَلْبِي عَلَى دِينِكَ».","جامع الترمذي (2140)، وابن ماجه (3834).","حسّنه الترمذي، وصحّحه الألباني في رواية أم سلمة.","h",1,""],
+[2004,8,"وضع اليد على موضع الألم","ضع يدك على الموضع الذي تألم من جسدك، وقل: «بِسْمِ اللهِ» ثلاثًا، وقل سبع مرات: «أَعُوذُ بِاللهِ وَقُدْرَتِهِ مِنْ شَرِّ مَا أَجِدُ وَأُحَاذِرُ».","صحيح مسلم (2202).","","h",1,""]
 ];
 const $=s=>document.querySelector(s),V=$("#v");
 const st=(k,d)=>{try{const x=localStorage.getItem(k);return x?JSON.parse(x):d}catch(e){return d}};
 const sv=(k,x)=>{try{localStorage.setItem(k,JSON.stringify(x))}catch(e){}};
-let fav=st("fav",[]),mine=st("mine",[]),done=st("done",{}),tk=st("tk",true),tab="h",ch=null,q="",cnt=0,goal=33,ft="",fb="";
+let fav=st("fav",[]),lists=st("lists",[]),mine0=st("mine",[]),pk=null,dl=null,done=st("done",{}),tk=st("tk",true),tab="h",ch=null,q="",cnt=0,goal=33,ft="",fb="";
+if(mine0.length&&!lists.length){lists=[{id:1,name:"قائمتي اليومية",ids:mine0}];sv("lists",lists)}
 const day=()=>new Date().toISOString().slice(0,10);
 const strip=s=>s.replace(/[\u064B-\u065F\u0670]/g,"");
 const norm=s=>strip(s).replace(/[أإآ]/g,"ا").replace(/ى/g,"ي").replace(/ة/g,"ه");
 const tx=s=>tk?s:strip(s);
 const BK=[["البخاري","البخاري"],["مسلم","مسلم"],["أبو داود","أبي داود|أبو داود"],["الترمذي","الترمذي"],["ابن ماجه","ابن ماجه"],["النسائي","النسائي"],["أحمد","أحمد"],["الموطأ","الموطأ"]];
-const TY=[["","الكل"],["q","قرآن"],["h","حديث"],["a","أثر"],["d","دعاء جائز"]];
+const TY=[["","الكل"],["q","قرآن كريم"],["h","حديث نبوي"],["a","أثر عن صحابي"],["d","دعاء عام"]];
+const TL={q:"قرآن كريم",h:"حديث نبوي",a:"أثر عن صحابي",d:"دعاء عام"};
+const gb=x=>{if(x[6]!="h")return"";const g=strip(x[5]),t=strip(x[5]+" "+x[4]);let r;
+if(/ضعف|اختلف|كلام بين/.test(g))r=["مختلف فيه","gmx"];
+else if(/حسن صحيح/.test(t))r=["حسن صحيح","gok"];
+else if(/حسن/.test(t))r=["حسن","gok"];
+else if(/صحح|صحيح/.test(g))r=["صحيح","gok"];
+else if(/صحيح البخاري|صحيح مسلم/.test(x[4]))r=["صحيح","gok"];
+else r=["الدرجة غير مذكورة","gun"];
+return `<span class="badge ${r[1]}">${r[0]}</span>`};
 const flt=x=>(!ft||x[6]==ft)&&(!fb||new RegExp(BK.find(b=>b[0]==fb)[1]).test(x[4]));
 const fbar=()=>`<div class="chips" aria-label="النوع">${TY.map(t=>`<button data-ft="${t[0]}" class="${ft==t[0]?"on":""}">${t[1]}</button>`).join("")}</div><div class="chips" aria-label="الكتاب"><button data-fb="" class="${fb==""?"on":""}">كل الكتب</button>${BK.map(b=>`<button data-fb="${b[0]}" class="${fb==b[0]?"on":""}">${b[0]}</button>`).join("")}</div>`;
 const has=(a,id)=>a.includes(id);
 const tog=(a,id)=>has(a,id)?a.filter(x=>x!==id):[...a,id];
 function streak(){let n=0,d=new Date();if(!(done[d.toISOString().slice(0,10)]||[]).length)d.setDate(d.getDate()-1);while((done[d.toISOString().slice(0,10)]||[]).length){n++;d.setDate(d.getDate()-1)}return n}
 function card(x){const[id,c,t,txt,src,gr,ty,n]=x,dn=has(done[day()]||[],id);
-return `<article class="card"><h3>${t}<span class="badge">${({q:"قرآن",a:"أثر",d:"دعاء جائز"})[ty]||"حديث"}</span>${n>1?`<span class="badge">${n} مرات</span>`:""}</h3><div class="txt">${tx(txt)}</div>${src?`<p class="src">المصدر: ${src}</p>`:""}${gr?`<p class="src">الدرجة: ${gr}</p>`:""}<div class="acts"><button data-a="fav" data-i="${id}" class="${has(fav,id)?"on":""}">المفضلة</button><button data-a="mine" data-i="${id}" class="${has(mine,id)?"on":""}">قائمتي</button><button data-a="done" data-i="${id}" class="${dn?"on":""}">تم اليوم</button><button data-a="copy" data-i="${id}">نسخ</button><button data-a="share" data-i="${id}">مشاركة</button></div></article>`}
+return `<article class="card"><h3>${t}<span class="badge t-${ty}">${TL[ty]||TL.h}</span>${gb(x)}${n>1?`<span class="badge">${n} مرات</span>`:""}</h3><div class="txt">${tx(txt)}</div>${src?`<p class="src">المصدر: ${src}</p>`:""}${gr?`<p class="src">الدرجة: ${gr}</p>`:""}<div class="acts"><button data-a="fav" data-i="${id}" class="${has(fav,id)?"on":""}">المفضلة</button><button data-a="pick" data-i="${id}" class="${lists.some(l=>l.ids.includes(id))?"on":""}">إلى قائمة</button><button data-a="done" data-i="${id}" class="${dn?"on":""}">تم اليوم</button><button data-a="copy" data-i="${id}">نسخ</button><button data-a="share" data-i="${id}">مشاركة</button></div></article>`}
 const get=id=>D.find(x=>x[0]==id);
+const go=()=>{view();V.classList.remove("an");void V.offsetWidth;V.classList.add("an")};
+const esc=s=>s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const addList=n=>{if(lists.some(l=>l.name==n))return;lists.push({id:Date.now(),name:n,ids:[]});sv("lists",lists);view()};
+const listsUI=()=>{const ch=["أدعية الدراسة","أدعية السفر","أدعية الكرب"].map(n=>`<button data-a="nl" data-n="${n}">+ ${n}</button>`).join("");
+let h=`<h2>قوائمي</h2><div class="glass box"><div class="row"><input type="text" id="ln" placeholder="اسم قائمة جديدة" aria-label="اسم القائمة"><button data-a="mk">إنشاء</button></div><div class="chips">${ch}</div></div>`;
+h+=lists.map(l=>{const it=l.ids.map(get).filter(Boolean);return `<section class="glass box"><div class="row"><h3 style="flex:1;margin:0">${esc(l.name)} (${it.length})</h3><button data-a="dl" data-l="${l.id}">${dl==l.id?"اضغط للتأكيد":"حذف"}</button></div>${it.length?it.map(card).join(""):`<p class="src">القائمة فارغة. أضف أذكارًا بزر «إلى قائمة».</p>`}</section>`}).join("");
+return h};
+const showPick=()=>{const m=$("#md");if(pk==null){m.classList.add("hid");return}
+m.classList.remove("hid");
+m.innerHTML=`<div class="mbox" role="dialog" aria-label="إضافة إلى قائمة"><h3>إضافة إلى قائمة</h3>${lists.length?lists.map(l=>`<button class="lrow ${l.ids.includes(pk)?"on":""}" data-a="tg" data-l="${l.id}">${l.ids.includes(pk)?"✓ ":""}${esc(l.name)}</button>`).join(""):`<p class="src">لا توجد قوائم بعد. أنشئ واحدة:</p>`}<div class="row"><input type="text" id="ln2" placeholder="قائمة جديدة" aria-label="قائمة جديدة"><button data-a="mk2">إنشاء</button></div><button data-a="cl">تم</button></div>`};
 function view(){
 let h="";
 if(tab=="h"){
@@ -218,22 +260,29 @@ const tag=["p"].concat(hr>=5&&hr<9?["w"]:[],(hr>=6&&hr<9)||(hr>=12&&hr<15)||(hr>
 const sg=D.filter(x=>tag.includes(x[8]));
 h=`<div class="card"><h3>أيام متتالية بذكر الله</h3><div class="big" style="font-size:48px;margin:6px 0">${streak()}</div><p class="src">اضغط «تم اليوم» على أي ذكر لتُحسب لك أيام الاستمرار.</p></div><h2>ذكر اليوم</h2>${card(dd)}<h2>مقترح الآن</h2>${sg.map(card).join("")}`}
 if(tab=="s"){h=`<div class="big" id="n">${cnt}</div><button class="tap" id="tp">اضغط للتسبيح</button><div class="row">الهدف: ${[33,100].map(g=>`<button data-g="${g}" class="${goal==g?"on":""}">${g}</button>`).join("")}<button id="rs">من جديد</button></div>`}
-if(tab=="f"){const f=fav.map(get).filter(Boolean),m=mine.map(get).filter(Boolean);
-h=`<h2>قائمتي اليومية</h2>${m.length?m.map(card).join(""):`<p class="src">أضف أذكارًا بزر «قائمتي» لتجدها هنا.</p>`}<h2>المفضلة</h2>${f.length?f.map(card).join(""):`<p class="src">اضغط «المفضلة» على أي ذكر لحفظه هنا.</p>`}`}
+if(tab=="f"){const f=fav.map(get).filter(Boolean);
+h=`${listsUI()}<h2>المفضلة</h2>${f.length?f.map(card).join(""):`<p class="src">اضغط «المفضلة» على أي ذكر لحفظه هنا.</p>`}`}
 V.innerHTML=h}
 document.addEventListener("click",e=>{
+if(e.target.id=="md"){pk=null;return showPick()}
 const b=e.target.closest("button");if(!b)return;
-if(b.dataset.t){tab=b.dataset.t;ch=null;q="";ft="";fb="";document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x==b));return view()}
-if(b.dataset.c){ch=+b.dataset.c;return view()}
-if(b.dataset.ft!==undefined){ft=b.dataset.ft;return view()}
-if(b.dataset.fb!==undefined){fb=b.dataset.fb;return view()}
+if(b.dataset.t){tab=b.dataset.t;ch=null;q="";ft="";fb="";document.querySelectorAll("nav button").forEach(x=>x.classList.toggle("on",x==b));return go()}
+if(b.dataset.c){ch=+b.dataset.c;return go()}
+if(b.dataset.ft!==undefined){ft=b.dataset.ft;return go()}
+if(b.dataset.fb!==undefined){fb=b.dataset.fb;return go()}
 if(b.dataset.g){goal=+b.dataset.g;cnt=0;return view()}
 if(b.id=="rs"){cnt=0;return view()}
 if(b.id=="tp"){cnt++;$("#n").textContent=cnt;if(cnt%goal==0&&navigator.vibrate)navigator.vibrate(200);else if(navigator.vibrate)navigator.vibrate(15);return}
 const a=b.dataset.a,id=+b.dataset.i;
-if(a=="back"){ch=null;return view()}
+if(a=="back"){ch=null;return go()}
 if(a=="fav"){fav=tog(fav,id);sv("fav",fav);return view()}
-if(a=="mine"){mine=tog(mine,id);sv("mine",mine);return view()}
+if(a=="pick"){pk=id;return showPick()}
+if(a=="tg"){const l=lists.find(l=>l.id==+b.dataset.l);if(l){l.ids=tog(l.ids,pk);sv("lists",lists);showPick();view()}return}
+if(a=="mk2"){const n=$("#ln2").value.trim();if(n&&!lists.some(l=>l.name==n)){lists.push({id:Date.now(),name:n,ids:[pk]});sv("lists",lists);showPick();view()}return}
+if(a=="cl"){pk=null;return showPick()}
+if(a=="mk"){const n=$("#ln").value.trim();if(n)addList(n);return}
+if(a=="nl"){addList(b.dataset.n);return}
+if(a=="dl"){const lid=+b.dataset.l;if(dl==lid){lists=lists.filter(l=>l.id!=lid);sv("lists",lists);dl=null}else dl=lid;return view()}
 if(a=="done"){const d=day();done[d]=tog(done[d]||[],id);sv("done",done);return view()}
 if(a=="copy"||a=="share"){const x=get(id),s=`${x[2]}\n${tx(x[3])}\nالمصدر: ${x[4]}`;
 if(a=="share"&&navigator.share)navigator.share({text:s}).catch(()=>{});
@@ -243,8 +292,10 @@ document.addEventListener("input",e=>{if(e.target.id=="q"){q=e.target.value;cons
 $("#bs").onclick=()=>$("#set").classList.toggle("hid");
 $("#fs").oninput=e=>{document.documentElement.style.setProperty("--fs",e.target.value+"px");sv("fs",e.target.value)};
 $("#tk").onclick=e=>{tk=!tk;sv("tk",tk);e.target.textContent="التشكيل: "+(tk?"يظهر":"مخفي");e.target.classList.toggle("on",tk);view()};
-$("#bt").onclick=()=>{const r=document.documentElement,dk=r.dataset.theme?r.dataset.theme=="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=dk?"light":"dark";sv("th",r.dataset.theme)};
-const th=st("th",null);if(th)document.documentElement.dataset.theme=th;
+const THS=[["night","ليلي أزرق"],["olive","هدوء زيتوني"],["sand","رملي"],["gold","ذهبي هادئ"]];
+const setTh=n=>{const r=document.documentElement;r.dataset.theme=n;sv("th",n);$("#bt").textContent=THS.find(t=>t[0]==n)[1]};
+$("#bt").onclick=()=>{const i=THS.findIndex(t=>t[0]==document.documentElement.dataset.theme);setTh(THS[(i+1)%THS.length][0])};
+const th=st("th","night");setTh(THS.some(t=>t[0]==th)?th:"night");
 const f0=st("fs",26);$("#fs").value=f0;document.documentElement.style.setProperty("--fs",f0+"px");
 $("#tk").textContent="التشكيل: "+(tk?"يظهر":"مخفي");$("#tk").classList.toggle("on",tk);
 view();
